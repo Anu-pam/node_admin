@@ -3,19 +3,19 @@ var router = express.Router();
 var con = require("./db");
 var bodyparser = require("body-parser");
 const { query } = require("express");
-const e = require("express"); 
+const e = require("express");
 var encoder = bodyparser.urlencoded();
 var mydetails = [];
 var totaldealer = "";
-var totalactivedealer = "";   
+var totalactivedealer = "";
 // =====================dashboard counter code1=================
 router.get("/", (req, res) => {
   con.query(
     "select count(dealer_id) as totaldealer from dealer_web ",
     (err, result) => {
       if (err) throw err;
-//       var totaldealer = JSON.stringify(result[0].totaldealer);
-        totaldealer = result.totaldealer
+      //       var totaldealer = JSON.stringify(result[0].totaldealer);
+      totaldealer = result[0].totaldealer;
     }
   );
 
@@ -25,40 +25,42 @@ router.get("/", (req, res) => {
     "select count(dealer_id) as activedealer from dealer_web where payment_status='1'",
     (error, result1) => {
       if (error) throw error;
-//       var totalactivedealer = result1[0].activedealer;
+      //       var totalactivedealer = result1[0].activedealer;
       totalactivedealer = result1.activedealer;
     }
   );
-  con.query(
-    "select dealer_id from dealer_web where payment_status='0'",
-    (err2, res2) => {
-      if (err2) {
-        throw err2;
-      } else {
-        res2.forEach((element) => {
-          var dealer_id = element.dealer_id;
-          con.query(
-            "select id from transaction where user_id='D" + dealer_id + "'",
-            (err3, req3) => {
-              var userCount = 0;
-              var userCount1 = 0;
-              if (err3) {
-                throw err3;
-              } else {
-                var d = 0;
-                if (req3 !== null) {
-                  userCount++;
-                } else {
-                  userCount1++;
-                }
-              }
-              // console.log(userCount);
-            }
-          );
-        });
-      }
-    }
-  );
+  // console.log(totalactivedealer);
+
+  // con.query(
+  //   "select dealer_id from dealer_web where payment_status='0'",
+  //   (err2, res2) => {
+  //     if (err2) {
+  //       throw err2;
+  //     } else {
+  //       res2.forEach((element) => {
+  //         var dealer_id = element.dealer_id;
+  //         con.query(
+  //           "select id from transaction where user_id='D" + dealer_id + "'",
+  //           (err3, req3) => {
+  //             var userCount = 0;
+  //             var userCount1 = 0;
+  //             if (err3) {
+  //               throw err3;
+  //             } else {
+  //               var d = 0;
+  //               if (req3 !== null) {
+  //                 userCount++;
+  //               } else {
+  //                 userCount1++;
+  //               }
+  //             }
+  //             // console.log(userCount);
+  //           }
+  //         );
+  //       });
+  //     }
+  //   }
+  // );
 
   data = {
     totaldealer: totaldealer,
