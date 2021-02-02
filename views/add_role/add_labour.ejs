@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <%- include('../common/headerlink.ejs') -%>
+  </head>
+  <body> 
+    <div class="container-scroller">
+      <%- include('../common/header.ejs'); -%>  
+      <div class="container-fluid page-body-wrapper">
+        <%- include('../common/left_navbar.ejs'); -%>  
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+
+<!-- ==========================my new code start============================== -->
+    <div class="card">
+        <div class="card-body">
+      
+          <div class="row">
+            <div class="col-sm-12 wrap-fpanel" data-spy="scroll" data-offset="0">                            
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading ">
+                        <div class="panel-title">
+                            <h4>Add Labour</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-sm-12">
+              <br/>		
+                <form role="form" id="employee-form" action="/register/labour" method="post" class="form-horizontal form-groups-bordered">    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel panel-info">
+                                <div class="panel-body ">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="control-label" >Name <span class="required"> *</span></label>
+                                                <input type="text" name="name" required="" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="control-label" >Mobile No <span class="required"> *</span></label>
+                                                <input type="text" name="mobile" required="" class="form-control numberonly" maxlength="10">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="control-label" >State <span class="required"> *</span></label>
+                                                <!--<input type="text" name="state" required="" class="form-control">-->
+                                                <select name="state" class="form-control" id="state" required="">
+                                                <option value="">Select State</option>
+                                            
+                                            </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="control-label" >City <span class="required"> *</span></label>
+                                                <!--<input type="text" name="city" required="" class="form-control">-->
+                                            <select name="city" class="form-control" required="" id="city">
+                                                 <option value="">Select City</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="control-label" >District <span class="required"> *</span></label>
+                                                <input type="text" name="district"  class="form-control">
+                                                <!--<select name="district" id="district" required="" class="form-control">
+                                                    <option value="">Select District</option>
+                                                </select>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="control-label" >Tehsil <span class="required"> *</span></label>
+                                                <input type="text" name="tehsil" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="control-label" >Address <span class="required"> *</span></label>
+                                                <input type="text" name="address" required="" class="form-control" id="address">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="control-label" >Pincode<span class="required"> *</span></label>
+                                                <input type="text" id="pincode" name="zipcode" id="zip_postalcode" required="" class="form-control"  value="" maxlength="6" minlength="6">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="control-label" >Category<span class="required"> *</span></label>
+                                                <!--<input type="text" name="category" required="" class="form-control">-->
+                                                <select name="category[]" multiple required="" class="js-example-basic-multiple form-control">
+                                                    <option value="Mazdoor(Building & Contruction)">Mazdoor(Building & Contruction)</option>
+                                                    <option value="Mazdoor(Loader/Unloader)">Mazdoor(Loader/Unloader)</option>
+                                                    <option value="Mazdoor(Agriculture)">Mazdoor(Agriculture)</option>
+                                                    <option value="Mazdoor(Cleaning & Maintenance)">Mazdoor(Cleaning & Maintenance)</option>
+                                                    <option value="Mazdoor(Boaring Labour)">Mazdoor(Boaring Labour)</option>
+                                                    <option value="Mistri">Mistri</option>
+                                                    <option value="Mistri(Tile Mistri)">Mistri(Tile Mistri)</option>
+                                                    <option value="Mistri(Boaring Mistri)">Mistri(Boaring Mistri)</option>
+                                                    <option value="Painter">Painter</option>
+                                                    <option value="Plumber(Reguler)">Plumber(Reguler)</option>
+                                                    <option value="Plumber(Boaring)">Plumber(Boaring)</option>
+                                                    <option value="Carpenter">Carpenter</option>
+                                                    <option value="Bar vendor">Bar vendor</option>
+                                                    <option value="Electrician">Electrician</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="status" class="form-control" value="1"/>
+                                    <input type="hidden" name="user_type" class="form-control" value="1"/>
+                                    <input type="hidden" name="created_by" class="form-control" value="<?php echo $this->session->userdata('dealer_id');?>"/>
+                              </div>    
+                              <br>
+                            <div class="col-sm-4 ">
+                                <button id="btn_emp" type="submit" class="btn btn-primary btn-block">Save</button>
+                            </div>    									
+                        </div>    
+                      </div>   
+                    </div>    
+                </form>      
+            </div>          
+          </div>          
+        </div>          
+    </div>
+
+<!-- ===========================my new code end============================= -->
+                
+            
+            </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+        <%- include('../common/footer.ejs') -%>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+       <%- include('../common/footerlink.ejs') -%>
+
+  </body>
+</html>

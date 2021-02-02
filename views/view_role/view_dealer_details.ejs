@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <%- include('../common/headerlink.ejs') -%>
+  </head>
+  <body> 
+    <div class="container-scroller">
+      <%- include('../common/header.ejs'); -%>  
+      <div class="container-fluid page-body-wrapper">
+        <%- include('../common/left_navbar.ejs'); -%>  
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+
+<!-- ==========================my new code start============================== -->
+<div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+      <div class="container-fluid">
+          <h3 class="text-justify">Dealer Details</h3>
+          <hr class="bg-secondary"> 
+        </div>
+        <div class="container-fluid d-flex justify-content-between">
+         
+          <%
+          if(data.length!=0)
+          {
+              data.forEach(function(row){
+            %> 
+            <div class="col-sm-6 mb-2">
+                <p>Dealer ID-<span class="text-info ml-1"><%=row.dealer_id%></span></p>
+                <p>Name-<span class="text-info ml-1"><%=row.dealer_fullname%></span></p>
+                <p>Mobile-<span class="text-info ml-1"><%=row.dealer_mobile%></span></p>
+                <p>State-<span class="text-info ml-1"><%=row.state_name%></span></p>
+                <p>City-<span class="text-info ml-1"><%=row.city_name%></span></p>
+                <p>Address-<span class="text-info ml-1"><%=row.dealer_address%></span></p>
+                <p>Zipcode-<span class="text-info ml-1"><%=row.dealer_pincode%></span></p>     
+            </div>
+            <div class="col-sm-6 mb-2">
+                <p>Added Date-<span class="text-info ml-1">
+                 <!-- <script>
+                    var paytime=1601424000000;
+                   var time = moment(paytime*1000).format("DD-MM-YYYY h:mm:ss");
+                    document.write(time);
+                 </script> -->
+   
+                 <!-- <%=data.time%> -->
+                  
+                  </span></p>
+                <p>Refered By-<span class="text-info ml-1"><%=row.dealer_ref_no%></span></p>
+                <p>Category-<span class="text-info ml-1"><%=row.dealer_category%></span></p> 
+                <p>
+                    <%
+                    if(row.payment_status==0)
+                    {
+                        %>
+                        <label class="badge badge-danger">Incomplete</label>
+                        <%
+                    }
+                    else
+                    {
+                        %>
+                        <label class="badge badge-success">Complete</label>
+                        <%
+                    }
+                    %>
+                </p>
+            </div>
+         <%
+              }) } else { %>
+              <tr>
+                <td colspan="7">No Data Found</td>
+            </tr>
+
+              <% } %>
+     
+           
+           
+        </div>
+
+
+    </div>
+  </div>
+    <label class="badge badge-info" style="margin-top: 10px;" ><a href="#" class="text-white" style="text-decoration: none;">Back</a></label>
+</div>
+
+
+<!-- ===========================my new code end============================= -->
+                
+            
+            </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+        <%- include('../common/footer.ejs') -%>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+       <%- include('../common/footerlink.ejs') -%>
+
+  </body>
+</html>

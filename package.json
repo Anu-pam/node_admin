@@ -1,0 +1,35 @@
+{
+  "name": "ADMIN",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "alert": "^5.0.6",
+    "alert-node": "^5.0.3",
+    "body-parser": "^1.19.0",
+    "datalize": "^0.3.4",
+    "date-and-time": "^0.14.1",
+    "date_formater-js": "^2.0.3",
+    "dateformat": "^4.0.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.1",
+    "jquery": "^3.5.1",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.32",
+    "msg91": "0.0.6",
+    "mysql": "^2.18.1",
+    "node-datetime": "^2.1.2",
+    "nodejs-base64": "^1.0.3",
+    "popups": "^1.1.3"
+  }
+}
