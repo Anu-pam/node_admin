@@ -8,6 +8,7 @@ var encoder = bodyparser.urlencoded();
 var mydetails = [];
 var totaldealer = "";
 var totalactivedealer = "";
+// =====================dashboard counter code=================
 router.get("/", (req, res) => {
   con.query(
     "select count(dealer_id) as totaldealer from dealer_web ",
@@ -35,7 +36,7 @@ router.get("/", (req, res) => {
         res2.forEach((element) => {
           var dealer_id = element.dealer_id;
           con.query(
-            "select id from transaction2 where user_id='D" + dealer_id + "'",
+            "select id from transaction where user_id='D" + dealer_id + "'",
             (err3, req3) => {
               var userCount = 0;
               var userCount1 = 0;
@@ -49,7 +50,7 @@ router.get("/", (req, res) => {
                   userCount1++;
                 }
               }
-              console.log(userCount);
+              // console.log(userCount);
             }
           );
         });
