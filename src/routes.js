@@ -14,7 +14,8 @@ router.get("/", (req, res) => {
     "select count(dealer_id) as totaldealer from dealer_web ",
     (err, result) => {
       if (err) throw err;
-      var totaldealer = JSON.stringify(result[0].totaldealer);
+//       var totaldealer = JSON.stringify(result[0].totaldealer);
+        totaldealer = result.totaldealer
     }
   );
 
@@ -24,7 +25,8 @@ router.get("/", (req, res) => {
     "select count(dealer_id) as activedealer from dealer_web where payment_status='1'",
     (error, result1) => {
       if (error) throw error;
-      var totalactivedealer = result1[0].activedealer;
+//       var totalactivedealer = result1[0].activedealer;
+      totalactivedealer = result1.activedealer;
     }
   );
   con.query(
