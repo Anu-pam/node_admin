@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <%- include('../common/headerlink.ejs') -%>
+  </head>
+  <body> 
+    <div class="container-scroller">
+      <%- include('../common/header.ejs'); -%>  
+      <div class="container-fluid page-body-wrapper">
+        <%- include('../common/left_navbar.ejs'); -%>  
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+
+<!-- ==========================my new code start============================== -->
+<div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Dealer Transaction Details</h4>
+        <div class="table-responsive">
+        <table class="table table-striped table-hover" id="order-listing">
+            <thead>
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Dealer Id.</th>
+                    <!-- <th>Dealer Name</th> -->
+                    <!-- <th>Dealer Mobile</th> -->
+                    <th>Transaction ID </th>
+                    <!-- <th>Transaction ID </th> -->
+                    <th>Transaction Date </th>
+                    <th>Expire Date </th>
+                    <th>Transaction Amount </th>
+                    <th>Transaction Details </th>
+                    <!-- <th>Details</th> -->
+                    <th>Payment Status </th>
+                    <!-- <th>Action </th> -->
+        
+                </tr>
+            </thead>
+            <tbody>
+              <%
+              if(data.length!=0){
+              var i=1;
+              data.forEach(function(row){  
+              %>
+                 <tr>
+                <td><%= i ;%></td>
+                <td><%=row.user_id%></td>
+                <td><%= row.payment_id;%></td>
+                <td><%= row.payment_time;%></td>
+                
+<!-- 
+                <td> 
+                 
+                  <script>
+                     var ts = "<%= row.payment_time %>"; 
+                    //  alert(ts);
+                     var theDate = new Date(ts * 1000);
+                    const currentDayOfMonth = theDate.getDate();
+                    const currentMonth = theDate.getMonth();
+                    const currentYear = theDate.getFullYear();
+                    const dateString1 = currentDayOfMonth + "-" + (currentMonth+1) + "-" + currentYear;
+                      document.write(dateString1);                        
+                   </script>
+                                 
+                </td> -->
+                <td><%= "not" ;%></td>
+                <td><%= row.payment_amount;%></td>
+                <td><%= row.transaction_detail;%></td>
+                <td>  <%
+                  if(row.payment_status==0)
+                  {
+                      %>
+                      <label class="badge badge-danger">failed</label>
+                      <%
+                  }
+                  else
+                  {
+                      %>
+                      <label class="badge badge-success">Complete</label>
+                      <%
+                  }
+                  %></td>                
+                 <!-- <td> <label class="badge badge-success"><a href="dealer_action_button?<%= row.dealer_id %>" style="text-decoration:none; color: white;">Active</a></label></td> -->
+                  </tr>
+                  <%  i++; }) %> 
+                  <% } else{ %>
+                      <tr>
+                          <td colspan="7">No Data Found</td>
+                      </tr>
+                  <% } %>
+             </tbody>
+    </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===========================my new code end============================= -->
+                
+            
+            </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+        <%- include('../common/footer.ejs') -%>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+       <%- include('../common/footerlink.ejs') -%>
+
+  </body>
+</html>

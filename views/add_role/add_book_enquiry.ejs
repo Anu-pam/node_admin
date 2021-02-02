@@ -1,0 +1,747 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <%- include('../common/headerlink.ejs') -%>
+  </head>
+  <body> 
+    <div class="container-scroller">
+      <%- include('../common/header.ejs'); -%>  
+      <div class="container-fluid page-body-wrapper">
+        <%- include('../common/left_navbar.ejs'); -%>  
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+
+<!-- ==========================my new code start============================== -->
+<div class="card px-2">
+    <div class="card-body">
+      <form role="form" id="employee-form" enctype="multipart/form-data"  action="#" method="post" class="form-horizontal form-groups-bordered">    
+          <div class="row">
+              <div class="wrap-fpanel">
+                  <div class="panel panel-default" style="padding-top: 12px">
+                      <div class="panel-heading">
+                          <div class="panel-title">
+                              <strong>Add Enquiry/Booking</strong>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+              <!-- ************************ Personal Information Panel Start ************************-->
+           <br>
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="panel panel-info">
+                      <div class="panel-body">
+                      <input type=input type="hidden" name="enquiry_added_by" readonly="" value="<?php if ($this->session->userdata('users_id')) echo $this->session->userdata('users_id') ?>" style="display: none">
+                           <div class="col-sm-12">
+                                  <div class="">
+                                      <div style="width:100px">
+                                          
+                                              <select id="booking_enquiry" id="status" class="form-control" name="booking_dropdown" onchange = "ShowHideField()">
+                                                  <option value="booking_form">Booking</option>
+                                                  <option value="enquiry_form">Enquiry</option>
+
+                                              </select>
+                                          
+                                      </div>
+                                      <div style="display: none">
+                                      <label class="control-label" >Enquiry Source<span class="required">*</span></label>
+                                      <br>
+                                      <label class="checkbox-inline"><input type="radio" name="enquiry_source" value="C.C." checked=""> Call Center</label>
+                                      <label class="checkbox-inline"><input type="radio" name="enquiry_source" value="Facebook"> Facebook</label>
+                                      <label class="checkbox-inline"><input type="radio" name="enquiry_source" value="Whatsapp"> Whatsapp Business</label>
+                                  </div>
+                                  </div>
+                                  <!-- 07/09/18 AWARENESS -->
+                                
+                                      <br>
+                                  <div class="">
+                                      <label class="control-label" >From Where Did You First Come to Know About Us ?<span class="required"> *</span></label>
+                                      <br>
+                                      <select class="form-control" name="users_awareness">
+                                          <option value="From Company Representative">From Company Representative</option>
+                                          <option value="From Labouradda User">From Labouradda User</option>
+                                          <option value="From Labour/Mistri">From Labour/Mistri</option>
+                                          <option value="LabourMandi">LabourMandi</option>
+                                          <option value="Street Banners">Street Banners</option>
+                                          <option value="Public Transport">Public Transport</option>
+                                          <option value="Friends & Family">Friends & Family</option>
+                                          <option value="Facebook">Facebook</option>
+                                          <option value="Instagram">Instagram</option>
+                                          <option value="Twitter">Twitter</option>
+                                          <option value="SMS Marketing">SMS Marketing</option>
+                                          <option value="APP">APP</option>
+                                          <option value="Google">Google</option>
+                                          <option value="Youtube">Youtube</option>
+                                          <option value="Market">Market</option>
+                                      </select>
+                                  </div>
+                        
+                                  <!--  -->
+                                  <hr>
+                              </div>
+                              <div class="row">
+                              <div class="col-sm-12">
+                                  <div class="">
+                                      <label class="control-label" >Name <span class="required"> *</span></label>
+                                      <input type="text" id="name_require" placeholder="Enter your Name" required name="enquiry_name"  value=" " class="form-control">
+                                  </div>
+                              </div>
+                              
+                          </div>
+                              <div class="row">
+                              <div class="col-sm-12">
+                                  <div class="">
+                                      <label class="control-label" >Contact No. <span class="required"> *</span></label>
+                                      <input type="text" id="txtboxToFilter" placeholder="Enter your Contact Number" name="enquiry_conact_no"  required maxlength="10" value="" class="form-control">
+                                  </div>
+                              </div>
+
+                             
+                              <div class="col-sm-12">
+                                  <div class="">
+                                      <label class="control-label" >Alternate Contact No. (Optional)</label>
+                                      <input type="text" name="enquiry_conact_no_2" placeholder="Enter your Alternate Contact Number" maxlength="10" value="" class="form-control txtboxToFilter">
+                                  </div>
+                              </div>
+                              
+
+                           <div class="col-sm-12">
+                            
+                           <div class="">
+                                      <label class="control-label" >Address<span class="required"> *</span></label>
+                                      <input type="text" class="form-control" name="enquiry_address" required onchange="get_zip()" placeholder="Locate your Area" id="pac-input" name="location" value="">
+                                      <small id="pac-input-error"></small>
+                                      </div>
+                          </div>
+                          <div class="col-sm-12">
+                                  <label class="control-label" >Any Landmark (Optional)</label>
+                                  <input type="text" id="" placeholder=" Enter your Landmark" name="enquiry_landmark"  value="" class="form-control">
+                              </div>
+                              <div class="col-md-12">
+                             <div class="">
+                              <label class="control-label" >Zipcode/Pincode<span class="required"> *</span>
+                                
+                              </label>
+                              
+                                  <input type="text" id="zip_postalcode" placeholder="Enter YourZipcode" required name="enquiry_zipcode" onchange="check_availability();" value="" class="form-control" maxlength="6" minlength="6">
+                              <small id="zip_postalcode_error"></small>
+                                          </div>
+                              </div>
+
+                          </div>
+                    
+                              <div class="" id="available"></div>
+                               
+
+                          <div class="row">
+                              <div class="col-sm-12">
+                                  <div class="">
+                                      <label class="control-label" >Category</label>
+                                      <select class="form-control" name="enquiry_categories" id="main_categories" onchange="get_subcategory();">
+                                          <option value="">Choose Categories</option>
+                                        
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="col-sm-12">
+                                  <div class="">
+                                      <label class="control-label" >Sub-Category</label>
+                                      <select class="form-control" name="enquiry_sub_categories" required id="sub_categories">
+                                          <option>Choose Sub-Categories</option>
+
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+
+                           <div class="" id="labour_count" style="display: none;">
+                                      <label class="control-label" >Available Labours</label>
+                                      <input type="text"value="" readonly="" class="form-control txtboxToFilter" id='avail_labour' >
+                                  </div>
+
+                           <div class="row" id="field0">
+                              <div class="col-sm-12 d-none">
+                                  <div class="">
+                                      <label class="control-label">No of Labour</label>
+                                      <input type="text" id="name_require" placeholder="Enter No of Labour" name="enquiry_no_of_labour"  value="" class="form-control">
+                                  </div>
+                              </div>
+                              <div class="col-sm-12">
+                                  <div class="">
+                                      <label class="control-label" >Choose booking date</label>
+                                      <input class="form-control booking_date" placeholder="Choose Booking Date" type="date" id="date_completed_date"  name="daterange[]" value="" />
+                                  </div>
+                              </div>
+
+
+                              <div class="col-sm-12" style="display: none">
+                                  <div class="">
+                                      <label class="control-label" >Time</label>
+                                      <input class="form-control  timepicker" placeholder="Enter Your Timing" id="date_completed_date1"  name="enquiry_labour_available_time[]" type="text" value="5:00 PM"/>
+                                  </div>
+                              </div>
+
+                          </div>
+
+                          <div class="row" id="button0" style="display: none">
+                              <div class="col-sm-12" style="margin-top: 2px">
+                                  <div class="form-group">
+                                      <div class="col-md-4">
+                                          <a id="add-more" name="add-more" class="btn btn-primary" style="color:white">Add More</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-sm-12 d-none">
+                                  <div class="">
+                                      <label class="control-label" >Gender</label><br>
+                                      <label><input type="radio" name="enquiry_gender" value="1" >Male</label>
+                                      <label><input type="radio" name="enquiry_gender" value="2"> Female</label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row" id="field1">
+
+                              <div class="col-sm-12" >
+                                  <div class="">
+                                      <label class="control-label" >Job details<span class="required"> </span></label>
+                                      <input type="text" id="txtboxToFilter" placeholder="Enter your Job Details" name="job_details"  
+                                       class="form-control" value="">
+                                  </div>
+                              </div>
+
+                              <div class="col-sm-6 d-none">
+                                  <div class="">
+                                      <label class="control-label" >Mandi Rate (Min)</label>
+                                      <input type="text" name="wage_offered" readonly class="form-control txtboxToFilter" placeholder="Minimum Amount per day" class="form-control" id="min_mandi_rate" value="">
+                                  </div>
+                              </div>
+
+                              <div class="col-sm-6 d-none">
+                                  <div class="">
+                                      <label class="control-label" >Mandi Rate (Max)</label>
+                                      <input type="text" readonly class="form-control txtboxToFilter" placeholder="Maximum Amount per day" class="form-control" id="max_mandi_rate">
+                                  </div>
+                              </div>
+
+                          </div>
+                          <div class="" id="field2">
+                              <label class="control-label" >Details/Any Remark (Optional)</label>
+                              <textarea class="form-control" placeholder=" Enter Details/Any Remark" name="enquiry_query_details"></textarea>
+                          </div>
+                      </div>            
+                  </div>            
+              </div>
+              
+              <div class="col-sm-2 margin" id="hidden_button">
+              <br>
+                  <button  type="submit"  class="btn btn-primary btn-block" id="btnalert" onclick="load()">Book</button>
+              </div>  
+               <div class="col-sm-2 margin" id="hidden_button1" style="display: none;">
+               <br>
+                  <button  type="submit" onclick="load()" class="btn btn-primary btn-block" id="btnalert">Save</button>
+              </div> 
+              <div class="col-sm-5 margin"> <span style="display: none;" class="lds-dual-ring" id="lds-dual-ring"></span></div>
+
+          </div>    
+          
+      </form>                  
+     </div>
+  </div>
+
+<!-- ===========================my new code end============================= -->
+                
+            
+            </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+        <%- include('../common/footer.ejs') -%>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+       <%- include('../common/footerlink.ejs') -%>
+
+  </body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+<script type="text/javascript">
+    function employee_list(employee_list) {
+        var printContents = document.getElementById(employee_list).innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+
+</script>  
+<script type="text/javascript">
+    function pdfmake(employee_list) {
+        var pdf = new jsPDF('p', 'pt', 'a4');
+        var printContents = document.getElementById(employee_list).innerHTML;
+        var originalContents = document.body.innerHTML;
+//        pdf.text(30, 30, originalContents);
+//        pdf.save('download.pdf');
+//        pdf.canvas.height = 72 * 11;
+//        pdf.canvas.width = 72 * 8.5;
+        pdf.fromHTML(printContents);
+        pdf.save('test.pdf');
+    }
+
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+                    $(document).ready(function () {
+                        var next = 0;
+                        $("#add-more").click(function (e) {
+//                                            alert();
+                            e.preventDefault();
+                            var addto = "#field" + next;
+                            var addRemove = "#field" + (next);
+                            next = next + 1;
+                            var newIn = '<div id="field' + next + '" class="row"><div class="col-sm-12"><div class=""><label class="control-label" >Choose booking date</label><input id="" class="form-control booking_date" type="text" name="daterange[]"/></div></div><div class="col-sm-12" style="display: none"><div class=""><label class="control-label" >Time</label><input class="form-control timepicker" name="enquiry_labour_available_time[]" type="text" value="5:00 PM"/></div></div><div class="col-sm-12"><div class=""><label class="control-label" >No of Labour</label><select class="form-control" name="enquiry_no_of_labour[]"><option val="1">1</option><option val="2">2</option><option val="3">3</option><option val="4">4</option><option val="5">5</option></select></div></div></div>';
+                            var newInput = $(newIn);
+                            var removeBtn = '<div class="row" style="margin-top:2px"><div class="col-sm-2"><button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >Remove</button></div></div><div id="field"></div></div>';
+                            var removeButton = $(removeBtn);
+                            $(addto).after(newInput);
+                            $(addRemove).after(removeButton);
+                            $("#field" + next).attr('data-source', $(addto).attr('data-source'));
+                            $("#count").val(next);
+
+                            $('.remove-me').click(function (e) {
+                                e.preventDefault();
+                                var fieldNum = this.id.charAt(this.id.length - 1);
+                                var fieldID = "#field" + fieldNum;
+                                $(this).remove();
+                                $(fieldID).remove();
+                            });
+                            var today = new Date();
+                            var dd = today.getDate() + 1;
+                            var mm = today.getMonth() + 1; //January is 0!
+                            var yyyy = today.getFullYear();
+
+                            if (dd < 10) {
+                                dd = '0' + dd;
+                            }
+
+                            if (mm < 10) {
+                                mm = '0' + mm;
+                            }
+
+                            today = mm + '/' + dd + '/' + yyyy;
+                            $('.booking_date').daterangepicker({
+                                "autoApply": true,
+                                "minDate": today,
+                                "formate": "dd/mm/Y"
+                            });
+
+
+                             var today = new Date();
+                        var dd = today.getDate() + 1;
+                        var mm = today.getMonth() + 1; //January is 0!
+                        var yyyy = today.getFullYear();
+
+                        if (dd < 10) {
+                            dd = '0' + dd;
+                        }
+
+                        if (mm < 10) {
+                            mm = '0' + mm;
+                        }
+
+                        today = mm + '/' + dd + '/' + yyyy;
+                        $('.booking_date').daterangepicker({
+                            "autoApply": true,
+                            "minDate": today,
+                            "formate": "dd/mm/Y"
+                        });
+                        });
+
+                        var today = new Date();
+                        var dd = today.getDate() + 1;
+                        var mm = today.getMonth() + 1; //January is 0!
+                        var yyyy = today.getFullYear();
+
+                        if (dd < 10) {
+                            dd = '0' + dd;
+                        }
+
+                        if (mm < 10) {
+                            mm = '0' + mm;
+                        }
+
+                        today = mm + '/' + dd + '/' + yyyy;
+                        $('.booking_date').daterangepicker({
+                            "autoApply": true,
+                            "minDate": today,
+                            "formate": "dd/mm/Y"
+                        });
+
+
+                         var today = new Date();
+                        var dd = today.getDate() + 1;
+                        var mm = today.getMonth() + 1; //January is 0!
+                        var yyyy = today.getFullYear();
+
+                        if (dd < 10) {
+                            dd = '0' + dd;
+                        }
+
+                        if (mm < 10) {
+                            mm = '0' + mm;
+                        }
+
+                        today = mm + '/' + dd + '/' + yyyy;
+                        $('.booking_date').daterangepicker({
+                            "autoApply": true,
+                            "minDate": today,
+                            "formate": "dd/mm/Y"
+                        });
+
+                       
+
+                        $("#txtboxToFilter").keydown(function (e) {
+                            // Allow: backspace, delete, tab, escape, enter and .
+                            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                                    // Allow: Ctrl+A, Command+A
+                                            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                                            // Allow: home, end, left, right, down, up
+                                                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                                        // let it happen, don't do anything
+                                        return;
+                                    }
+                                    // Ensure that it is a number and stop the keypress
+                                    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                                        e.preventDefault();
+                                    }
+                                });
+
+                        $(".txtboxToFilter").keydown(function (e) {
+                            // Allow: backspace, delete, tab, escape, enter and .
+                            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                                    // Allow: Ctrl+A, Command+A
+                                            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                                            // Allow: home, end, left, right, down, up
+                                                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                                        // let it happen, don't do anything
+                                        return;
+                                    }
+                                    // Ensure that it is a number and stop the keypress
+                                    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                                        e.preventDefault();
+                                    }
+                                });
+                    });
+
+                    function getSubCategories() {
+
+                        var id = $("#main_categories").val();
+//        alert(id);
+                        var datastring = "id=" + id;
+                        $.ajax({
+                            type: "POST",
+                            dataType: 'json',
+                            url: "<?php echo base_url() . 'index.php/userenquary/Enquiry/get_sub_categories/'; ?>",
+                            data: datastring, //send the selected area value
+
+                            success: function (data) {
+//alert(data.standard);
+                                $("#subcat option").remove();
+                                $("#subcat").append(// Append an object to the inside of the select box
+                                        $("<option></option>") // Yes you can do this.
+                                        .text("Please Choose Subcategory")
+                                        .val(0)
+                                        );
+                                $.each(data.subcat, function (index, item) { // Iterates through a collection
+                                    $("#subcat").append(// Append an object to the inside of the select box
+                                            $("<option></option>") // Yes you can do this.
+                                            .text(item.name)
+                                            .val(item.id)
+                                            );
+
+                                });
+                            }
+                        });
+                    }
+
+                    function getCity() {
+
+                        var id = $("#state").val();
+//        alert(id);
+                        var datastring = "id=" + id;
+//        alert(datastring);
+                        $.ajax({
+                            type: "POST",
+                            dataType: 'json',
+                            url: "<?php echo base_url() . 'index.php/userenquary/Enquiry/getCity/'; ?>",
+                            data: datastring, //send the selected area value
+
+                            success: function (data) {
+//alert(data.standard);
+                                $("#citylist option").remove();
+                                $("#citylist").append(// Append an object to the inside of the select box
+                                        $("<option></option>") // Yes you can do this.
+                                        .text("कृपया शहर का नाम चुनें")
+                                        .val()
+                                        );
+                                $.each(data.city, function (index, item) { // Iterates through a collection
+                                    $("#citylist").append(// Append an object to the inside of the select box
+                                            $("<option></option>") // Yes you can do this.
+                                            .text(item.name)
+                                            .val(item.id)
+                                            );
+
+                                });
+                            }
+                        });
+                    }
+</script>
+<script type="text/javascript">
+    $(function () {
+
+    });
+</script>
+<script> 
+    function get_subcategory() {
+        var main_id = $("#main_categories").val();
+        if (main_id.length > 0) {
+            var datastring = "main_category_id=" + main_id;
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "<?php echo base_url() . 'agent/Call/get_sub_category/'; ?>",
+                data: datastring, //send the selected area value
+
+                success: function (data) {
+//alert(data.standard);
+                    $("#sub_categories option").remove();
+                    $("#sub_categories").append(// Append an object to the inside of the select box
+                            $("<option></option>") // Yes you can do this.
+                            .text("Please Choose Sub-category")
+                            .val("")
+                            );
+                    $.each(data.subcat, function (index, item) { // Iterates through a collection
+                        $("#sub_categories").append(// Append an object to the inside of the select box
+                                $("<option></option>") // Yes you can do this.
+                                .text(item.sub_categories_name)
+                                .val(item.sub_categories_id)
+                                );
+
+                    });
+                }
+            });
+        } else {
+            swal("Main Category is required", "Please choose main category name!", "error");
+        }
+    }
+</script>
+
+<script>
+    function get_address_zipcode() {
+        var zip_address = $("#zip_address").val();
+        if (zip_address.length > 0) {
+            var datastring = "zip_address=" + zip_address;
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "<?php echo base_url() . 'index.php/agent/Call/getZipcode/'; ?>",
+                data: datastring, //send the selected area value
+
+                success: function (data) {
+//                    alert(data.zipcode);
+                    $("#zip_postalcode").val(data.zipcode);
+                }
+            });
+        }
+    }
+</script>
+
+<script>
+    function close_model() {
+        $('#myModal').modal('toggle');
+//   alert($("#zip_postalcode").val());
+        if ($("#zip_postalcode").val() == "Sorry, We are unable to find zipcode") {
+
+        } else {
+            $("#form_zipcode").val($("#zip_postalcode").val());
+        }
+    }</script>
+
+<script>
+    function open_model() {
+        $("#zip_address").val($("#form_address").val());
+        $('#myModal').modal('toggle');
+    }
+</script>
+<script type="text/javascript">
+    function ShowLoading(e) {
+        var div = document.createElement('div');
+        var img = document.createElement('img');
+        img.src = '<?php echo base_url();?>assets/loader.gif';
+        div.innerHTML = "Enquery Saving.....<br />";
+        div.style.cssText = 'position: fixed; top: 0%; left: 0%; z-index: 999; width: 100%; height:100%; text-align: center; background: #EDDBB0; border: 1px solid #000';
+        div.appendChild(img);
+        document.body.appendChild(div);
+        return true;
+        // These 2 lines cancel form submission, so only use if needed.
+        //window.event.cancelBubble = true;
+        //e.stopPropagation();
+    }
+</script>
+
+
+<!-- show and hide field -->
+<script type="text/javascript">
+    function ShowHideField() {
+        var booking_enquiry = document.getElementById("booking_enquiry");
+        var field0 = document.getElementById("field0");
+        var button0 = document.getElementById("button0");
+        var field1 = document.getElementById("field1");
+        //var field2 = document.getElementById("field2"); 
+        var hidden_button = document.getElementById("hidden_button");
+        //var hidden_button1 = document.getElementById("hidden_button1"); 
+
+
+
+        field0.style.display = booking_enquiry.value == "enquiry_form" ? "none" : "block";
+        button0.style.display = booking_enquiry.value == "enquiry_form" ? "none" : "block";
+        field1.style.display = booking_enquiry.value == "enquiry_form" ? "none" : "block";
+        //field2.style.display = booking_enquiry.value == "enquiry_form" ? "none" : "block";
+
+        
+        hidden_button.style.display = booking_enquiry.value == "enquiry_form" ? "none" : "block";
+        hidden_button1.style.display = booking_enquiry.value == "booking_form" ? "none" : "block";
+
+    }
+</script><!--end show and hide field -->
+
+
+<!--start how to input field take zero by irshad -->
+<script type="text/javascript">
+    var date = $('#date_completed_date').val();
+$("select").on("change", function () {
+  
+    if ($(this).val().indexOf('ed') == -1) {
+   $('#date_completed_date').val('');
+}
+    else { 
+        $('#date_completed_date').val(date); 
+    }
+   
+})
+
+ var date = $('#date_completed_date1').val();
+$("select").on("change", function () {
+  
+    if ($(this).val().indexOf('ed') == -1) {
+   $('#date_completed_date1').val('');
+}
+    else { 
+        $('#date_completed_date1').val(date); 
+    }
+   
+})
+</script>
+<!--End how to input field take zero by irshad -->
+
+<!-- added by irshad -->
+<!--Get PINCODE ********************STARTS************************** -->
+<script>
+function get_zip()
+{
+  var add_input=$("#pac-input").val();
+                   
+  if (add_input.length > 0) 
+  {
+    // $("#zip_postalcode").prop('disabled', true);
+    $("#loader").hide();  //show(); after api
+    $.ajax({
+        type: "POST",
+        dataType: 'json',
+        url: "<?php echo base_url() . 'api/Lafriends/getZipcode/'; ?>",
+        data: {add_input:add_input}, //send the selected area value
+
+        success: function (data) {
+
+        $("#zip_postalcode").val(data.zipcode);
+        $("#loader").hide();
+        $("#zip_postalcode").prop('disabled', false);
+        // validateAddress('pac-input','pac-input-error');
+        // validateZip('zip_postalcode','zip_postalcode_error');
+        }
+    });
+  }
+}
+</script>
+
+<script type="text/javascript">
+    function check_availability(){
+        var zipcode = $("#zip_postalcode").val();
+        var datastring = "zip_address=" + zipcode;
+        
+         $.ajax({
+        type: "POST",
+        dataType: 'json',
+        url: "<?php echo base_url() . 'agent/Enquiry/check_availability/'; ?>",
+        data: datastring, //send the selected area value
+
+        success: function (data) {
+            if(data==0){
+                $("#available").html('Services not Available !!!');
+                $('#available').css({'color':'red'}); 
+               
+            }
+            else{
+                $("#available").html('Services Available');
+                $('#available').css({'color':'green'}); 
+            }
+
+        }
+    });
+
+    }
+</script>
+<script type="text/javascript">
+    function date_filter(){
+        var date = $("#date_completed_date1").val();
+        alert(date);
+        var datastring = "enquiry_labour_available_time[]=" + zipcode;
+        
+         $.ajax({
+        type: "POST",
+        dataType: 'json',
+        url: "<?php echo base_url() . 'agent/Enquiry/check_availability/'; ?>",
+        data: datastring, //send the selected area value
+
+        success: function (data) {
+            if(data==0){
+                $("#available").html('Services not Available !!!');
+                $('#available').css({'color':'red'}); 
+                document.getElementById("labour_count").style.display = "none";
+            }
+            else{
+                $("#available").html('Services Available');
+                $('#available').css({'color':'green'}); 
+                document.getElementById("labour_count").style.display = "block";
+                $("#avail_labour").val(data);
+            }
+    
+        }
+    });
+
+    }
+</script>
+
+
+<script type="text/javascript">
+    function load() {
+  document.getElementById("lds-dual-ring").style.display = "block";
+}
+</script>

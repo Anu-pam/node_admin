@@ -1,42 +1,64 @@
-<%- include('common/nav'); -%>
-<html>
-    <head>
-        <title>Labouradda.Water</title>
-    </head>
-    <body>
-       <div class="container">
-           <div class="row">
-               <div class="col-md-5 cardcenter">
-                 <div class="card cardlogin">
-                  <% if(failed!='') { %> 
-                    <div class="alert alert-danger">
-                      <strong>Danger!</strong> <%= failed %>
-                    </div>
-                  <% } %>
-                     <div class="card-header">
-                         Login
-                     </div>
-                     <div class="card ">
-                        <div class="card-body">
-                            <form action="/form_login" method="post">
-                                <div class="form-group">
-                                  <label for="exampleInputEmail1">Email address</label>
-                                  <input type="email"  name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                </div>
-                                <div class="form-group">
-                                  <label for="exampleInputPassword1">Password</label>
-                                  <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-                                </div>
-                               
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                              </form>
-                        </div>
-                     </div>
-                 </div>
-               </div>
-           </div>
-       </div>
 
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>City Franchisee</title>
+    <link rel="stylesheet" href="../asset1/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../asset1/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../asset1/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="../asset1/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../asset1/css/style.css">
+    <link rel="stylesheet" href="../asset1/css/localstyle.css">
+    <link rel="stylesheet" href="../asset1/images/favicon_adam.png">
+    
+    <link rel="shortcut icon" href="<?php echo base_url('../../../asset1/');?>images/favicon.png" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="row w-100">
+          <div class="content-wrapper full-page-wrapper d-flex align-items-center auth-pages">
+            <div class="card col-lg-4 mx-auto">
+              <div class="card-body px-5 py-5">
+                 
+                <h3 class="card-title text-left mb-3">Login</h3>
+                <form action="<?php echo base_url(); ?>admin/LoginAuth/loginCheck" method="post">
+                  <div class="form-group">
+                    <label>Username or email *</label>
+                    <input type="text" name="user_email" class="form-control p_input" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Password *</label>
+                    <input type="password" name="user_password" class="form-control p_input" required>
+                  </div>
+                  <div class="form-group d-flex align-items-center justify-content-between">
+                    <!-- <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input"> Remember me </label>
+                    </div> -->
+                    <a href="#" class="forgot-pass">Forgot password</a>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+        
+      </div>
+      
+    </div>
+ 
+  </body>
 </html>
+
+<!-- ===========================my new code end============================= -->
+                
+      

@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <%- include('../common/headerlink.ejs') -%>
+  </head>
+  <body> 
+    <div class="container-scroller">
+      <%- include('../common/header.ejs'); -%>  
+      <div class="container-fluid page-body-wrapper">
+        <%- include('../common/left_navbar.ejs'); -%>  
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+
+<!-- ==========================my new code start============================== -->
+<div class="row">
+    <!-- Form-->
+    <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="col-sm-12 wrap-fpanel" data-spy="scroll" data-offset="0">                            
+            <div class="panel panel-default">
+                <div class="panel-heading text-center ">
+                    <div class="panel-title">
+                        <h3 class="text-white">Provincial Partner Profile</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="card-description font-weight-bold">Provincial Partner Information</h4>
+        <div class="template-demo mt-1">
+          <form id="editable-form" class="editable-form">
+            <div class="form-group row">
+              <label class="col-6 col-lg-4 col-form-label h4 font-weight-bold">Provincial Partner Id</label>
+              <div class="col-6 col-lg-8 d-flex align-items-center">
+                <p class="text-success" data-type="text" data-pk="1"><%=user_id;%></p>
+              </div>
+            </div>
+            <!-- <div class="form-group row">
+              <label class="col-6 col-lg-4 col-form-label h4 font-weight-bold">Provincial Partner Category</label>
+              <div class="col-6 col-lg-8 d-flex align-items-center">
+                <p class="text-success"  data-type="text" data-pk="1" data-placement="right" data-placeholder="Required"><%=user_category%></p>
+              </div>
+            </div> -->
+            <div class="form-group row">
+              <label class="col-6 col-lg-4 col-form-label h4 font-weight-bold">Provincial Partner Company Name</label>
+              <div class="col-6 col-lg-8 d-flex align-items-center">
+                <p class="text-success"  data-type="text" data-pk="1" data-placement="right" data-placeholder="Required"><%=user_name;%></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-6 col-lg-4 col-form-label h4 font-weight-bold">Provincial Partner Mobile Number</label>
+              <div class="col-6 col-lg-8 d-flex align-items-center">
+                <p class="text-success" data-type="select" data-pk="1" data-value=""></p>
+              </div>
+            </div>
+            <!-- <div class="form-group row">
+              <label class="col-6 col-lg-4 col-form-label h4 font-weight-bold">Provincial Partner GST Status</label>
+              <div class="col-6 col-lg-8 d-flex align-items-center">
+                <p class="text-success" data-type="select" data-pk="1" data-value=""></p>
+              </div>
+            </div> -->
+            <!-- <div class="form-group row">
+              <label class="col-6 col-lg-4 col-form-label h4 font-weight-bold">Provincial Partner GST Number</label>
+              <div class="col-6 col-lg-8 d-flex align-items-center">
+                <p class="text-success" data-type="select" data-pk="1" data-value=""></p>
+              </div>
+            </div> -->
+            <div class="form-group row">
+              <label class="col-6 col-lg-4 col-form-label h4 font-weight-bold">Provincial Partner State</label>
+              <div class="col-6 col-lg-8 d-flex align-items-center">
+                <p class="text-success" data-type="textarea" data-pk="1" data-placeholder="Your comments here..."></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-6 col-lg-4 col-form-label h4 font-weight-bold">Provincial Partner City(Assigned location)</label>
+              <div class="col-6 col-lg-8 d-flex align-items-center">
+                <p class="text-success" data-type="textarea" data-pk="1" data-placeholder="Your comments here..."></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-6 col-lg-4 col-form-label h4">Provincial Partner Pincode</label>
+              <div class="col-6 col-lg-8 d-flex align-items-center">
+                <p class="text-success" data-type="textarea" data-pk="1" data-placeholder="Your comments here..."></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-6 col-lg-4 col-form-label h4 font-weight-bold">Provincial Partner Address</label>
+              <div class="col-6 col-lg-8 d-flex align-items-center">
+                <p class="text-success" data-type="textarea" data-pk="1" data-placeholder="Your comments here..."></p>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-6 col-lg-4 col-form-label h4 font-weight-bold">Provincial Partner Password</label>
+              <div class="col-6 col-lg-8 d-flex align-items-center">
+                <p class="text-success" data-type="textarea" data-pk="1" data-placeholder="Your comments here..."></p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+     <br/>		
+    </div>          
+  </div>
+
+<!-- ===========================my new code end============================= -->
+                
+            
+            </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+        <%- include('../common/footer.ejs') -%>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+       <%- include('../common/footerlink.ejs') -%>
+
+  </body>
+</html>

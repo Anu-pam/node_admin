@@ -20,7 +20,7 @@
         <?php echo message_box('success'); ?>
         <?php echo message_box('error'); ?>
         <div class="card-title">
-          <span class="h4 mr-5 pr-5">View All Dealer</span>
+          <span class="h4 mr-5 pr-5">View All CityFranchisees</span>
         </div>
         <div class="table-responsive">
         <table class="table table-striped table-hover" id="order-listing">
@@ -38,9 +38,9 @@
                 <!-- <th>Refered By</th> -->
                       <!-- <th>Category</th> -->
                 <th>More</th>
-                <th>Payment Status</th>
+                <!-- <th>QR Code No.</th> -->
                 <!-- <th>Action</th> -->
-                      <!-- <th>Status</th> -->
+                <th>Status</th>
             </tr>
         </thead>
        <tbody>
@@ -51,25 +51,28 @@
         %>
            <tr>
            <td><%= i; %></td>  
-           <td><%=row.dealer_fullname %></td>     
-           <td><%=row.dealer_mobile%></td>
-           <td><%=row.dealer_pincode%></td>
-           <td><label class="badge badge-info"><a href="dealer_more_button?dealer_id=<%= row.dealer_id %>" style="text-decoration: none; color: white;">More</a></label></td>
-           <td><%
-            if(row.payment_status==0)
-            {
-            %>
-            <label class="badge badge-danger">Incomplete</label>
-            <%
-            }
-            else{
-                %>
-                <label class="badge badge-success">Complete</label>          
+           <td><%=row.users_name %></td>     
+           <td><%=row.users_mobile%></td>
+           <td><%=row.users_zipcode%></td> 
+           <td><label class="badge badge-info"><a href="cityfranchisee_more_button?users_id=<%=row.users_id%>" style="text-decoration: none; color: white;">More</a></label></td>
+          
+           <!-- <td> <label class="badge badge-success"><a href="labour_action_button?labour_id<%= row.id %>" style="text-decoration:none; color: white;">Action</a></label></td> -->
+           <td>
            <%
-            }
-            %></td>
-           <!-- <td> <label class="badge badge-success"><a href="dealer_action_button?<%= row.dealer_id %>" style="text-decoration:none; color: white;">Active</a></label></td> -->
-            </tr>
+           if(row.payment_status==0)
+           {
+           %>
+           <label class="badge badge-danger">Incomplete</label>
+           <%
+           }
+           else{
+               %>
+               <label class="badge badge-success">Complete</label>    
+          <%
+           }
+           %>
+          </td>
+        </tr>
             <%  i++; }) %> 
             <% } else{ %>
                 <tr>

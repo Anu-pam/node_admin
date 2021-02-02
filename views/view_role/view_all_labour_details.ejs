@@ -18,7 +18,7 @@
     <div class="card">
       <div class="card-body">
       <div class="container-fluid">
-          <h3 class="text-justify">Dealer Details</h3>
+          <h3 class="text-justify">Labours Details</h3>
           <hr class="bg-secondary"> 
         </div>
         <div class="container-fluid d-flex justify-content-between">
@@ -29,21 +29,21 @@
               data.forEach(function(row){
             %> 
             <div class="col-sm-6 mb-2">
-                <p>Dealer ID-<span class="text-info ml-1"><%=row.dealer_id%></span></p>
-                <p>Name-<span class="text-info ml-1"><%=row.dealer_fullname%></span></p>
-                <p>Mobile-<span class="text-info ml-1"><%=row.dealer_mobile%></span></p>
+                <p>Labour ID-<span class="text-info ml-1"><%=row.id%></span></p>
+                <p>Name-<span class="text-info ml-1"><%=row.name%></span></p>
+                <p>Mobile-<span class="text-info ml-1"><%=row.mobile%></span></p>
                 <p>State-<span class="text-info ml-1"><%=row.state_name%></span></p>
                 <p>City-<span class="text-info ml-1"><%=row.city_name%></span></p>
-                <p>Address-<span class="text-info ml-1"><%=row.dealer_address%></span></p>
-                <p>Zipcode-<span class="text-info ml-1"><%=row.dealer_pincode%></span></p>     
+                <p>Address-<span class="text-info ml-1"><%=row.address%></span></p>
+                <p>Zipcode-<span class="text-info ml-1"><%=row.zipcode%></span></p>     
             </div>
             <div class="col-sm-6 mb-2">
                 <p>Added Date-<span class="text-info ml-1">
               
-                  <% if (row.payment_time) { %>
+                  <% if (row.create_time) { %>
                     
                     <script>
-                       var ts = "<%= row.payment_time %>"; 
+                       var ts = "<%= row.create_time %>"; 
                        var theDate = new Date(ts * 1000);
                       const currentDayOfMonth = theDate.getDate();
                       const currentMonth = theDate.getMonth();
@@ -54,20 +54,22 @@
                    
                <% } %>     
                   </span></p>
-                <p>Refered By-<span class="text-info ml-1"><%=row.dealer_ref_no%></span></p>
-                <p>Category-<span class="text-info ml-1"><%=row.dealer_category%></span></p> 
+                <p>Refered By-<span class="text-info ml-1"><%=row.created_by%></span></p>
+                <p>QR Code No-<span class="text-info ml-1"><%=row.QR_id_no%></span></p>
+
+                <p>Category-<span class="text-info ml-1"><%=row.category%></span></p> 
                 <p>
                     <%
-                    if(row.payment_status==0)
+                    if(row.status==0)
                     {
                         %>
-                        <label class="badge badge-danger">Incomplete</label>
+                        <label class="badge badge-danger">Block</label>
                         <%
                     }
                     else
                     {
                         %>
-                        <label class="badge badge-success">Complete</label>
+                        <label class="badge badge-success">Active</label>
                         <%
                     }
                     %>
@@ -88,7 +90,7 @@
 
     </div>
   </div>
-    <label class="badge badge-info" style="margin-top: 10px;" ><a href="view_all_dealer" class="text-white" style="text-decoration: none;">Back</a></label>
+    <label class="badge badge-info" style="margin-top: 10px;" ><a href="view_all_labour" class="text-white" style="text-decoration: none;">Back</a></label>
 </div>
 
 
