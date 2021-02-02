@@ -3,12 +3,12 @@ var router = express.Router();
 var con = require("./db");
 var bodyparser = require("body-parser");
 const { query } = require("express");
-const e = require("express");
+const e = require("express"); 
 var encoder = bodyparser.urlencoded();
 var mydetails = [];
 var totaldealer = "";
-var totalactivedealer = "";
-// =====================dashboard counter code=================
+var totalactivedealer = "";   
+// =====================dashboard counter code1=================
 router.get("/", (req, res) => {
   con.query(
     "select count(dealer_id) as totaldealer from dealer_web ",
